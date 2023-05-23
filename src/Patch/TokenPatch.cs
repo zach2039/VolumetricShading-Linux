@@ -5,11 +5,11 @@ namespace VolumetricShading.Patch
 {
     public class TokenPatch : RegexPatch
     {
-        private const string TokenSeparators = ".,+-*/;{}[]()=:|^&?#";
-        private const string StartToken = "(^|[\\.,+\\-*/;{}[\\]()=:|^&?#\\s])";
-        private const string EndToken = "($|[\\.,+\\-*/;{}[\\]()=:|^&?#\\s])";
-        private const string OptionalRegexSeparator = "\\s*?";
-        private const string RegexSeparator = "\\s+?";
+        private const string TokenSeparators = @".,+-*/;{}[]()=:|^&?#";
+        private const string StartToken = @"(^|[\.,+\-*\/;{}\[\]()=:|^&?#\s])";
+        private const string EndToken = @"($|[\.,+\-*\/;{}\[\]()=:|^&?#\s])";
+        private const string OptionalRegexSeparator = @"\s*?";
+        private const string RegexSeparator = @"\s+?";
 
         private static Regex BuildRegex(string tokenStr)
         {
@@ -53,7 +53,8 @@ namespace VolumetricShading.Patch
             var lastLength = 0;
             foreach (var token in extendedTokenStr)
             {
-                var regexToken = Regex.Escape(token.ToString());
+                //var regexToken = Regex.Escape(token.ToString());
+                var regexToken = token.ToString();
                 
                 if (token == ' ')
                 {
@@ -69,7 +70,15 @@ namespace VolumetricShading.Patch
                     if (lastLength != 0 && !wasSeparator)
                         sb.Append(OptionalRegexSeparator);
                     
-                    sb.Append(regexToken);
+                    if (token.ToString() == "=") 
+                    {
+                        sb.Append('\\');
+                        sb.Append(token);
+                    }
+                    else
+                    {
+                        sb.Append(Regex.Escape(token.ToString()));
+                    }
                     sb.Append(OptionalRegexSeparator);
                     
                     wasSeparator = true;

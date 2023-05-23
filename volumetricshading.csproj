@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<AssemblyTitle>VolumetricShadingLinux</AssemblyTitle>
 		<Authors>xxmicloxx, Novocain, Zach2039</Authors>
-		<Version>0.6.6</Version>
+		<Version>0.7.1</Version>
 		<TargetFramework>net461</TargetFramework>
 	</PropertyGroup>
 	
