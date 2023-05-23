@@ -42,12 +42,13 @@ namespace VolumetricShading.Patch
         public override string Patch(string filename, string code)
         {
             var match = Regex.Match(code);
+            var replacement = this.ReplacementString;
             if (!match.Success)
             {
                 if (!Optional)
                 {
                     throw new InvalidOperationException(
-                        $"Could not execute non-optional patch: Regex {Regex} not matched");
+                        $"Could not execute non-optional patch: Regex {Regex} not matched in file {filename} for patch containing edit:\n{replacement}\n, in code:\n{code}");
                 }
 
                 return code;

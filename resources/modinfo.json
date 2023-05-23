@@ -1,10 +1,10 @@
 {
   "type": "code",
   "modid": "volumetricshading",
-  "name": "Volumetric Shading",
-  "authors": [ "xxmicloxx", "Novocain" ],
+  "name": "Volumetric Shading Linux",
+  "authors": [ "xxmicloxx", "Novocain", "Zach2039" ],
   "description": "Adds multiple shader changes to the game.",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "side":  "Client",
   "dependency": {
     "game": ""
