@@ -113,8 +113,8 @@ namespace VolumetricShading.Effects
                 { ReplacementString = "float dropletnoise(in vec2 x, in float waveCounter)" };
             content = tokenPatch.Patch("dropletnoise", content);
 
-            tokenPatch = new TokenPatch("smoothstep(0.99") 
-                { ReplacementString = "smoothstep(0.97" };
+            tokenPatch = new TokenPatch("a = smoothstep(0.99, 0.999, a);") 
+                { ReplacementString = "a = smoothstep(0.97, 0.999, a);" };
             content = tokenPatch.Patch("dropletnoise", content);
 
             _mod.ShaderInjector["dropletnoise"] = content;
